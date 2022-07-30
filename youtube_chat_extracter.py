@@ -55,6 +55,7 @@ def get_chat_comments(youtube_id):
 						paid_comment += "[{}]".format(c["emoji"]["emojiId"])
 					except:
 						print("GET ERROR KEYWORD: {}".format(c))
+			#print("paid_comment: " + paid_comment)
 			comment_data["comment"] = paid_comment
 			comment_data["author"] = actions_data["replayChatItemAction"]["actions"][0]["addChatItemAction"]["item"]["liveChatPaidMessageRenderer"]["authorName"]["simpleText"]
 			comment_data["paid"] = actions_data["replayChatItemAction"]["actions"][0]["addChatItemAction"]["item"]["liveChatPaidMessageRenderer"]["purchaseAmountText"]["simpleText"]
@@ -62,7 +63,7 @@ def get_chat_comments(youtube_id):
 			try:
 				comments = actions_data["replayChatItemAction"]["actions"][0]["addChatItemAction"]["item"]["liveChatTextMessageRenderer"]["message"]["runs"]
 				comment = ""
-				for c in paid_comments:
+				for c in comments:
 					try:
 						comment += c["text"]
 					except:
@@ -70,6 +71,7 @@ def get_chat_comments(youtube_id):
 							comment += "[{}]".format(c["emoji"]["emojiId"])
 						except:
 							print("GET ERROR KEYWORD: {}".format(c))
+				#print("comment: " + comment)
 				comment_data["comment"] = comment
 				comment_data["author"] = actions_data["replayChatItemAction"]["actions"][0]["addChatItemAction"]["item"]["liveChatTextMessageRenderer"]["authorName"]["simpleText"]
 			except:
@@ -112,6 +114,7 @@ def get_chat_comments(youtube_id):
 								paid_comment += "[{}]".format(c["emoji"]["emojiId"])
 							except:
 								print("GET ERROR KEYWORD: {}".format(c))
+					#print("paid_comment:" + paid_comment)
 					comment_data["comment"] = paid_comment
 					comment_data["author"] = actions_data["replayChatItemAction"]["actions"][0]["addChatItemAction"]["item"]["liveChatPaidMessageRenderer"]["authorName"]["simpleText"]
 					comment_data["paid"] = actions_data["replayChatItemAction"]["actions"][0]["addChatItemAction"]["item"]["liveChatPaidMessageRenderer"]["purchaseAmountText"]["simpleText"]
@@ -119,7 +122,7 @@ def get_chat_comments(youtube_id):
 					try:
 						comments = actions_data["replayChatItemAction"]["actions"][0]["addChatItemAction"]["item"]["liveChatTextMessageRenderer"]["message"]["runs"]
 						comment = ""
-						for c in paid_comments:
+						for c in comments:
 							try:
 								comment += c["text"]
 							except:
@@ -127,6 +130,7 @@ def get_chat_comments(youtube_id):
 									comment += "[{}]".format(c["emoji"]["emojiId"])
 								except:
 									print("GET ERROR KEYWORD: {}".format(c))
+						#print("comment:" + comment)
 						comment_data["comment"] = comment
 						comment_data["author"] = actions_data["replayChatItemAction"]["actions"][0]["addChatItemAction"]["item"]["liveChatTextMessageRenderer"]["authorName"]["simpleText"]
 					except:
